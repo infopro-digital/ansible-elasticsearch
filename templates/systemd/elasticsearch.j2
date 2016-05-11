@@ -9,7 +9,6 @@ Environment=ES_HOME={{es_home}}
 Environment=CONF_DIR={{conf_dir}}
 Environment=DATA_DIR={{ data_dirs | array_to_str }}
 Environment=LOG_DIR={{log_dir}}
-Environment=PID_DIR={{pid_dir}}
 EnvironmentFile=-{{instance_default_file}}
 
 User={{es_user}}
@@ -19,7 +18,6 @@ ExecStart={{es_home}}/bin/elasticsearch \
 {% if es_version | version_compare('1.0.0', '<') %}
                                         -f \
 {% endif %}
-                                        -Des.pidfile=${PID_DIR}/elasticsearch.pid \
                                         -Des.default.path.home=${ES_HOME} \
                                         -Des.default.path.logs=${LOG_DIR} \
                                         -Des.default.path.data=${DATA_DIR} \
